@@ -15,7 +15,11 @@ docker exec -it ci /bin/bash
 # 2&3. Run and attach together
 docker run -d -it --rm --gpus all -v ~/.docker_ccache:/root/.cache/ccache --name ci open3d-gpu-ci:latest && docker exec -it ci /bin/bash
 
-# 4. Stop container
+# 4. Build and test
+# Now you should be in /root/Open3D inside docker
+./gpu_docker/build_and_test.sh
+
+# 5. Stop container
 docker stop ci
 
 # Extra: run command immediately
