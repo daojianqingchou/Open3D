@@ -15,10 +15,10 @@ cmake -DBUILD_SHARED_LIBS=ON \
       -DBUILD_PYTORCH_OPS=OFF \
       -DBUILD_RPC_INTERFACE=OFF \
       -DCMAKE_INSTALL_PREFIX=/root/open3d_install \
-      -DPYTHON_EXECUTABLE=$(command -v python) \
       -DBUILD_UNIT_TESTS=ON \
       -DBUILD_BENCHMARKS=ON \
       -DBUILD_EXAMPLES=ON \
+      -DBUILD_PYTHON_MODULE=OFF \
       ..
 
 # Build
