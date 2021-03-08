@@ -27,9 +27,6 @@ RUN git clone https://github.com/ccache/ccache.git \
  && cd build \
  && cmake -DCMAKE_BUILD_TYPE=Release -DZSTD_FROM_INTERNET=ON .. \
  && make -j$(nproc) \
- && make install
-
-RUN ccache --version \
- && ccache -s
-
-
+ && make install \
+ && ccache --version \
+ && ccache -M 10G
