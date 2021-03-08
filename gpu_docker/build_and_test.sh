@@ -6,11 +6,10 @@ mkdir build
 pushd build
 
 # Configure
-cmake -DBUILD_SHARED_LIBS=ON \
+cmake -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_LIBREALSENSE=ON \
       -DBUILD_CUDA_MODULE=ON \
-      -DCUDA_ARCH=BasicPTX \
       -DBUILD_TENSORFLOW_OPS=OFF \
       -DBUILD_PYTORCH_OPS=OFF \
       -DBUILD_RPC_INTERFACE=OFF \
