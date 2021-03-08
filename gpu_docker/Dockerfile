@@ -6,6 +6,10 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     software-properties-common \
     wget \
+    xorg-dev \
+    libglu1-mesa-dev \
+    python3-dev \
+    git \
  && rm -rf /var/lib/apt/lists/*
 
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null \
@@ -14,7 +18,18 @@ RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/nul
 
 RUN apt-get update && apt-get install -y \
     cmake \
-    xorg-dev \
-    libglu1-mesa-dev \
-    python3-dev \
  && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/ccache/ccache.git \
+ && cd ccache \
+ && git checkout v4.2 -b 4.2 \
+ && mkdir build \
+ && cd build \
+ && cmake -DCMAKE_BUILD_TYPE=Release -DZSTD_FROM_INTERNET=ON .. \
+ && make -j$(nproc) \
+ && make install
+
+RUN ccache --version \
+ && ccache -s
+
+
