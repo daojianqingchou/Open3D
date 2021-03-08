@@ -24,7 +24,7 @@ cmake -DBUILD_SHARED_LIBS=OFF \
 make -j$(nproc)
 
 # Test
-./bin/tests --gtest_filter="-*Sum*"
+CUDA_VISIBLE_DEVICES=0 ./bin/tests --gtest_filter="-*Sum*"
 
 popd
 popd
