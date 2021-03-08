@@ -32,4 +32,5 @@ RUN git clone https://github.com/ccache/ccache.git \
  && ccache -M 10G
 
 COPY . /root/Open3D
+
 WORKDIR /root/Open3D
